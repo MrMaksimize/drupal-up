@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "squeeze"
   config.vm.box_url = "https://s3.amazonaws.com/wa.milton.aws.bucket01/sqeeze.box"
 
-  config.vm.network :private_network, ip: "10.33.10.16"
+  config.vm.network :private_network, ip: "10.33.10.19"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", 2048]
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
   # config.vm.network :forwared_port, guest: 22, host: 2201,
   #   auto_correct: true
 
-  project = 'proto2'
+  project = 'kw'
 
   config.vm.hostname = "mrm-#{project}"
 
