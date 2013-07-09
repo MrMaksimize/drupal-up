@@ -44,18 +44,6 @@ Vagrant.configure("2") do |config|
         :server_debian_password => 'debpass',
         :server_repl_password => 'replpass'
       },
-      :drupal => {
-        :projects => {
-          project => {
-            :sites => {
-              project => {
-                :uri => "#{project}.dev",
-                :build => TRUE
-              }
-            },
-          }
-        }
-      },
       :apache => {
         :prefork => {
           :startservers => 5,
@@ -64,10 +52,24 @@ Vagrant.configure("2") do |config|
           :serverlimit => 10,
           :maxclients => 10
         }
+      },
+      :drupal => {
+        :sites => {
+          "#{project}.dev" => {
+            :root => "/var/drupals/#{project}",
+            :doc_root => "/var/drupals/#{project}/build",
+            :db => "#{project}DB",
+            :db_username => "#{project}DBA",
+            :db_password => "#{project}PASS",
+            :db_init => true,
+            :provider => :drupal_kw_site
+          }
+        }
       }
     }
-
     chef.add_recipe "solo-helper"
-    chef.add_recipe "drupal_projects::node_sites"
+    chef.add_recipe "drupal::default"
+    chef.add_recipe "drupal::node_sites"
+    chef.add_recipe "drupal::drush"
   end
 end

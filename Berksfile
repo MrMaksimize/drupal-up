@@ -1,5 +1,5 @@
 site :opscode
 
-cookbook "drupal_projects", git: "https://github.com/MrMaksimize/drupal_projects.git", branch: "master"
+cookbook "drupal", path: "/Users/MrMaksimize/Work/drupal_projects"
 cookbook "solo-helper", git: "https://github.com/glennpratt/solo-helper_cookbook.git"
 cookbook "chef-xdebug", git: "https://github.com/MrMaksimize/chef-xdebug.git"
