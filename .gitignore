@@ -4,3 +4,4 @@ vendor
 build/ref_db/files*
 build/ref_db/*.sql*
 build/ref_db/slaughterhouse
+www/sites/default/settings*
