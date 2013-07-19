@@ -18,7 +18,7 @@ drush="drush $drush_flags"
 build_path=$(dirname "$0")
 ref_db_path=$build_path/ref_db/$REF_DB_FILENAME
 
-setup_site="$drush si -y minimal --account-pass='drupaladm1n' --site-name='Awesome Site'"
+setup_site="$drush si -y minimal --account-pass=drupaladm1n --site-name=Awesome Site"
 
 if $USE_REF_DB; then
 	if -f $ref_db_path; then
