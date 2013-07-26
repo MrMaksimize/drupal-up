@@ -1,10 +1,18 @@
 
 Vagrant.configure("2") do |config|
-    config.berkshelf.enabled = true
-  # The path to the Berksfile to use with Vagrant Berkshelf
-    config.berkshelf.berksfile_path = "./Berksfile"
+  # Variables to Change
+  project_name = 'kw3'
+  box_ip = '10.33.10.27'
+  box_memory = 2048
+  # End Variables To Change
 
-  # An array of symbols representing groups of cookbook described in the Vagrantfile
+   # Chef Omnibus Version
+  config.omnibus.chef_version = :latest
+
+  config.berkshelf.enabled = true
+  # The path to the Berksfile to use with Vagrant Berkshelf
+  config.berkshelf.berksfile_path = "./Berksfile"
+   # An array of symbols representing groups of cookbook described in the Vagrantfile
   # to skip installing and copying to Vagrant's shelf.
   # config.berkshelf.only = []
 
@@ -15,10 +23,10 @@ Vagrant.configure("2") do |config|
   config.vm.box = "squeeze"
   config.vm.box_url = "https://s3.amazonaws.com/wa.milton.aws.bucket01/sqeeze.box"
 
-  config.vm.network :private_network, ip: "10.33.10.19"
+  config.vm.network :private_network, ip: "#{box_ip}" #"10.33.10.16"
 
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", 2048]
+    vb.customize ["modifyvm", :id, "--memory", box_memory]
   end
 
   config.ssh.max_tries = 40
@@ -31,9 +39,9 @@ Vagrant.configure("2") do |config|
   # config.vm.network :forwared_port, guest: 22, host: 2201,
   #   auto_correct: true
 
-  project = 'kw'
+  project = "#{project_name}"
 
-  config.vm.hostname = "mrm-#{project}"
+  config.vm.hostname = "vdev-#{project}"
 
   config.vm.synced_folder ".", "/var/drupals/#{project}", :nfs => true
 
