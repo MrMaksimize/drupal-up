@@ -65,12 +65,20 @@ Vagrant.configure("2") do |config|
         :sites => {
           "#{project}.dev" => {
             :root => "/var/drupals/#{project}",
+<<<<<<< HEAD
             :doc_root => "/var/drupals/#{project}/build",
             :db => "#{project}DB",
             :db_username => "#{project}DBA",
             :db_password => "#{project}PASS",
             :db_init => true,
             :provider => :drupal_kw_site
+=======
+            :doc_root => "/var/drupals/#{project}/www",
+            :db => "#{project}DB",
+            :db_username => "#{project}DBA",
+            :db_password => "#{project}PASS",
+            :db_init => true
+>>>>>>> origin/master
           }
         }
       }
